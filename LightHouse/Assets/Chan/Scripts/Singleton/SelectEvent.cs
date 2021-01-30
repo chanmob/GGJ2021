@@ -22,7 +22,7 @@ public class SelectEvent : MonoBehaviour
 
     public Image characterImage, sub_characterImage, sub_characterImage_Sel;
     
-    public Text characterName, charTxt, pointTxt, badOrGood, badBtnTxt, goodBtnTxt;
+    public Text characterName, characterName_Sel, charTxt, pointTxt, badOrGood, badBtnTxt, goodBtnTxt;
     
     public Slider pointSlider;
 
@@ -55,7 +55,7 @@ public class SelectEvent : MonoBehaviour
         firshipThrDay[3] = "그러면 토요일날 봐요~";
         firshipThrDay[4] = "집에서 무식하게 잠이나 자쇼.";
 
-        day = "Thr";    // 임의대로 day를 선언해둠.
+        day = "Fir";    // 임의대로 day를 선언해둠.
 
         StartCoroutine("EventStart");
     }
@@ -80,16 +80,19 @@ public class SelectEvent : MonoBehaviour
 
         if(day == "Fir")
         {
+            charTxt.text = "";
             badOrGood.text = firshipfirDay[4];
             characterImage.sprite = characterType[3];
         }
         else if(day == "Sec")
         {
+            charTxt.text = "";
             badOrGood.text = firshipSecDay[4];
             characterImage.sprite = characterType[3];
         }
         else if(day == "Thr")
         {
+            charTxt.text = "";
             badOrGood.text = firshipThrDay[4];
             characterImage.sprite = characterType[3];
         }
@@ -111,16 +114,19 @@ public class SelectEvent : MonoBehaviour
 
         if (day == "Fir")
         {
+            charTxt.text = "";
             badOrGood.text = firshipfirDay[3];
             characterImage.sprite = characterType[4];
         }
         else if (day == "Sec")
         {
+            charTxt.text = "";
             badOrGood.text = firshipSecDay[3];
             characterImage.sprite = characterType[4];
         }
         else if (day == "Thr")
         {
+            charTxt.text = "";
             badOrGood.text = firshipThrDay[3];
             characterImage.sprite = characterType[4];
         }
@@ -151,6 +157,7 @@ public class SelectEvent : MonoBehaviour
                 sub_characterImage_Sel.sprite = characterType[5];
                 charTxt.text = firshipfirDay[0];
                 characterName.text = "무역함 선장";
+                characterName_Sel.text = "무역함 선장";
                 goodBtnTxt.text = firshipfirDay[1];
                 badBtnTxt.text = firshipfirDay[2];
                 badOrGood.text = "";
@@ -181,6 +188,7 @@ public class SelectEvent : MonoBehaviour
                 sub_characterImage_Sel.sprite = characterType[5];
                 charTxt.text = firshipSecDay[0];
                 characterName.text = "무역함 선장";
+                characterName_Sel.text = "무역함 선장";
                 goodBtnTxt.text = firshipSecDay[1];
                 badBtnTxt.text = firshipSecDay[2];
                 badOrGood.text = "";
@@ -211,6 +219,7 @@ public class SelectEvent : MonoBehaviour
                 sub_characterImage_Sel.sprite = characterType[5];
                 charTxt.text = firshipThrDay[0];
                 characterName.text = "무역함 선장";
+                characterName_Sel.text = "무역함 선장";
                 goodBtnTxt.text = firshipThrDay[1];
                 badBtnTxt.text = firshipThrDay[2];
                 badOrGood.text = "";
