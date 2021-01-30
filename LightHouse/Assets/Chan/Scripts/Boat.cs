@@ -48,6 +48,11 @@ public class Boat : MonoBehaviour
         }
     }
 
+    public void SetBoatType(BoatType type)
+    {
+        boatType = type;
+    }
+
     public void SetDestination(Vector2 destination)
     {
         if(_coroutine != null)

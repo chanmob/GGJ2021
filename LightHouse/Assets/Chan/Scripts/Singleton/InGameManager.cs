@@ -90,6 +90,8 @@ public class InGameManager : Singleton<InGameManager>
         for (int i = 0; i < 4; i++)
         {
             Boat boat = ObjectPoolManager.instance.GetBoat();
+            int randomType = Random.Range(1, 4);
+            boat.SetBoatType((BoatType)randomType);
             boat.transform.position = GetTransform().position;
             boat.gameObject.SetActive(true);
             boatCount++;
@@ -153,6 +155,8 @@ public class InGameManager : Singleton<InGameManager>
             yield return new WaitForSeconds(4f);
 
             Boat boat = ObjectPoolManager.instance.GetBoat();
+            int randomType = Random.Range(1, 4);
+            boat.SetBoatType((BoatType)randomType);
             boat.transform.position = GetTransform().position;
             boat.gameObject.SetActive(true);
             boatCount++;
