@@ -2,25 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BoatType
+{
+    None
+}
+
 public class Boat : MonoBehaviour
 {
     private const float minDistance = 0.005f;
 
-    private IEnumerator coroutine;
+    private IEnumerator _coroutine;
+
+    private BoatType boatType;
 
     [SerializeField]
-    private float speed = 0.01f;
+    private float _speed = 0.01f;
+
+    private void OnEnable()
+    {
+        switch (boatType)
+        {
+
+        }
+    }
 
     public void SetDestination(Vector2 destination)
     {
-        if(coroutine != null)
+        if(_coroutine != null)
         {
-            StopCoroutine(coroutine);
-            coroutine = null;
+            StopCoroutine(_coroutine);
+            _coroutine = null;
         }
 
-        coroutine = BoatMoveCoroutine(destination);
-        StartCoroutine(coroutine);
+        _coroutine = BoatMoveCoroutine(destination);
+        StartCoroutine(_coroutine);
     }
 
     private IEnumerator BoatMoveCoroutine(Vector2 destination)
@@ -29,11 +44,25 @@ public class Boat : MonoBehaviour
 
         while(sqr > minDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, destination, speed);
+            transform.position = Vector2.MoveTowards(transform.position, destination, _speed);
             sqr = ((Vector2)transform.position - destination).sqrMagnitude;
             yield return null;
         }
 
         transform.position = destination;
+    }
+
+    private void BreakBoat()
+    {
+        ObjectPoolManager.instance.ReturnBoat(this);
+        InGameManager.instance.DecreaseHP(1);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Obstacle"))
+        {
+            BreakBoat();
+        }
     }
 }

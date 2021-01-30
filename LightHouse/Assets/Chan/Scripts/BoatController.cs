@@ -6,6 +6,8 @@ public class BoatController : MonoBehaviour
 {
     public Boat selectedBoat;
 
+    public GameObject lightObject;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -32,6 +34,16 @@ public class BoatController : MonoBehaviour
                     selectedBoat.SetDestination(Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 }
             }
+        }
+
+        if(selectedBoat != null)
+        {
+            lightObject.SetActive(true);
+            lightObject.transform.position = selectedBoat.transform.position;
+        }
+        else
+        {
+            lightObject.SetActive(false);
         }
     }
 }

@@ -7,7 +7,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     [SerializeField]
     private Boat _boatPrefab;
 
-    private Stack<Boat> _stack_Boat;
+    private Stack<Boat> _stack_Boat = new Stack<Boat>();
 
 
     public Boat GetBoat()
@@ -36,7 +36,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         {
             Boat newBoat = Instantiate(_boatPrefab);
             newBoat.gameObject.SetActive(false);
-            _stack_Boat.Push(_boatPrefab);
+            _stack_Boat.Push(newBoat);
         }
     }
 }
