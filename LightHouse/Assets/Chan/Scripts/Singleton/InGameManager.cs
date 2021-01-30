@@ -7,7 +7,7 @@ public class InGameManager : Singleton<InGameManager>
 {
     private const float minDistance = 0.5f;
 
-    private const float dayTime = 60f;
+    private const float dayTime = 3f;
 
     [SerializeField]
     private Light2D globalLight;
@@ -24,6 +24,8 @@ public class InGameManager : Singleton<InGameManager>
     private int day = 1;
 
     public int boatCount = 0;
+    public int arrivedBoatCount = 0;
+
 
     private bool isDay = false;
     private bool timeOff = false;
@@ -82,6 +84,14 @@ public class InGameManager : Singleton<InGameManager>
 
     private IEnumerator DayCoroutine()
     {
+        for (int i = 0; i < 4; i++)
+        {
+            Boat boat = ObjectPoolManager.instance.GetBoat();
+            boat.transform.position = GetTransform().position;
+            boat.gameObject.SetActive(true);
+            boatCount++;
+        }
+
         while (true)
         {
             if(!isDay)

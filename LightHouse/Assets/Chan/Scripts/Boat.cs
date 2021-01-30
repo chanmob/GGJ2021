@@ -67,6 +67,8 @@ public class Boat : MonoBehaviour
 
     private void ArriveIsland()
     {
+        InGameManager.instance.arrivedBoatCount++;
+        InGameManager.instance.boatCount--;
         audioSource.Play();
         ObjectPoolManager.instance.ReturnBoat(this);
     }

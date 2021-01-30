@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &14834218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 324303150}
   m_Layer: 0
   m_Name: Island
-  m_TagString: Untagged
+  m_TagString: Island
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2224,7 +2224,7 @@ GameObject:
   - component: {fileID: 1607246635}
   m_Layer: 0
   m_Name: Island
-  m_TagString: Untagged
+  m_TagString: Island
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2553,7 +2553,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   globalLight: {fileID: 2116605024}
   dayColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-  nightColor: {r: 0, g: 0.27450982, b: 0.5882353, a: 1}
+  nightColor: {r: 0.36124957, g: 0.48323247, b: 0.6226415, a: 1}
   spawnTransform:
   - {fileID: 1567969754}
   - {fileID: 2138635732}
@@ -2561,6 +2561,7 @@ MonoBehaviour:
   - {fileID: 211365131}
   - {fileID: 1229476280}
   boatCount: 0
+  arrivedBoatCount: 0
 --- !u!4 &1629878260
 Transform:
   m_ObjectHideFlags: 0
@@ -3084,7 +3085,7 @@ GameObject:
   - component: {fileID: 2021623768}
   m_Layer: 0
   m_Name: Island
-  m_TagString: Untagged
+  m_TagString: Island
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
