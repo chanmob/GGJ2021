@@ -4,7 +4,10 @@ using UnityEngine;
 
 public enum BoatType
 {
-    None
+    None,
+    Red,
+    Blue,
+    Yellow
 }
 
 public class Boat : MonoBehaviour
@@ -20,6 +23,10 @@ public class Boat : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public SpriteRenderer flag;
+
+    public Sprite[] flagSprites;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -29,7 +36,15 @@ public class Boat : MonoBehaviour
     {
         switch (boatType)
         {
-
+            case BoatType.Red:
+                flag.sprite = flagSprites[0];
+                break;
+            case BoatType.Blue:
+                flag.sprite = flagSprites[1];
+                break;
+            case BoatType.Yellow:
+                flag.sprite = flagSprites[2];
+                break;
         }
     }
 
@@ -79,9 +94,30 @@ public class Boat : MonoBehaviour
         {
             BreakBoat();
         }
-        else if (collision.CompareTag("Island"))
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (boatType)
         {
-            ArriveIsland();
+            case BoatType.Red:
+                if (collision.gameObject.CompareTag("Island_Red"))
+                {
+                    ArriveIsland();
+                }
+                break;
+            case BoatType.Yellow:
+                if (collision.gameObject.CompareTag("Island_Yellow"))
+                {
+                    ArriveIsland();
+                }
+                break;
+            case BoatType.Blue:
+                if (collision.gameObject.CompareTag("Island_Blue"))
+                {
+                    ArriveIsland();
+                }
+                break;
         }
     }
 }

@@ -7,6 +7,9 @@ TagManager:
   - Boat
   - Obstacle
   - Island
+  - Island_Red
+  - Island_Blue
+  - Island_Yellow
   layers:
   - Default
   - TransparentFX
