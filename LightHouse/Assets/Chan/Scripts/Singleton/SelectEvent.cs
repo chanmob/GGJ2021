@@ -17,8 +17,10 @@ public class SelectEvent : MonoBehaviour
     string[] firshipSecDay = new string[5]; // 첫번째 배 둘째 날 대사 
     string[] firshipThrDay = new string[5]; // 첫번째 배 셋째 날 대사
 
-    string day = "";
-    int point = 50;
+    int point = 0;
+
+    public static int intDay = 0;
+    public static string strDay = "";
 
     public Image characterImage, sub_characterImage, sub_characterImage_Sel;
     
@@ -55,7 +57,7 @@ public class SelectEvent : MonoBehaviour
         firshipThrDay[3] = "그러면 토요일날 봐요~";
         firshipThrDay[4] = "집에서 무식하게 잠이나 자쇼.";
 
-        day = "Fir";    // 임의대로 day를 선언해둠.
+        //day = "Fir";    // 임의대로 day를 선언해둠.
 
         StartCoroutine("EventStart");
     }
@@ -77,28 +79,33 @@ public class SelectEvent : MonoBehaviour
             point = point - 2;
         }
 
-
-        if(day == "Fir")
+        if(intDay == 0)
         {
             charTxt.text = "";
             badOrGood.text = firshipfirDay[4];
             characterImage.sprite = characterType[3];
+
+            TextPanel.SetActive(true);
+            BtnPanel.SetActive(false);
         }
-        else if(day == "Sec")
+        else if(intDay == 1)
         {
             charTxt.text = "";
             badOrGood.text = firshipSecDay[4];
             characterImage.sprite = characterType[3];
+
+            TextPanel.SetActive(true);
+            BtnPanel.SetActive(false);
         }
-        else if(day == "Thr")
+        else if(intDay == 2)
         {
             charTxt.text = "";
             badOrGood.text = firshipThrDay[4];
             characterImage.sprite = characterType[3];
-        }
 
-        TextPanel.SetActive(true);
-        BtnPanel.SetActive(false);
+            TextPanel.SetActive(true);
+            BtnPanel.SetActive(false);
+        }
     }
 
     public void onClickGoodBtn()
@@ -112,35 +119,42 @@ public class SelectEvent : MonoBehaviour
             point = point + 35;
         }
 
-        if (day == "Fir")
+        if (intDay == 0)
         {
             charTxt.text = "";
             badOrGood.text = firshipfirDay[3];
             characterImage.sprite = characterType[4];
+
+            TextPanel.SetActive(true);
+            BtnPanel.SetActive(false);
         }
-        else if (day == "Sec")
+        else if (intDay == 1)
         {
             charTxt.text = "";
             badOrGood.text = firshipSecDay[3];
             characterImage.sprite = characterType[4];
+
+            TextPanel.SetActive(true);
+            BtnPanel.SetActive(false);
         }
-        else if (day == "Thr")
+        else if (intDay == 2)
         {
             charTxt.text = "";
             badOrGood.text = firshipThrDay[3];
             characterImage.sprite = characterType[4];
-        }
 
-        TextPanel.SetActive(true);
-        BtnPanel.SetActive(false);
+            TextPanel.SetActive(true);
+            BtnPanel.SetActive(false);
+        }
     }
 
     IEnumerator EventStart()
     {
         while(true)
         {
-            if(day == "Fir")
+            if(intDay == 0)
             {
+                Debug.Log("1");
                 if(point < 40)
                 {
                     characterImage.sprite = characterType[1];
@@ -170,8 +184,9 @@ public class SelectEvent : MonoBehaviour
                     break;
                 }
             }
-            else if(day == "Sec")
+            else if(intDay == 1)
             {
+                Debug.Log("2");
                 if (point < 40)
                 {
                     characterImage.sprite = characterType[1];
@@ -201,8 +216,9 @@ public class SelectEvent : MonoBehaviour
                     break;
                 }
             }
-            else if(day == "Thr")
+            else if(intDay == 2)
             {
+                Debug.Log("3");
                 if (point < 40)
                 {
                     characterImage.sprite = characterType[1];

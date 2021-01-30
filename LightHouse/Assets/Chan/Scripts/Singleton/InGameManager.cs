@@ -20,6 +20,9 @@ public class InGameManager : Singleton<InGameManager>
     [SerializeField]
     private Transform[] spawnTransform;
 
+    [SerializeField]
+    private GameObject EventObject;     //
+
     private int hp = 5;
     private int day = 1;
 
@@ -124,15 +127,19 @@ public class InGameManager : Singleton<InGameManager>
             time = 0;
             isDay = !isDay;
 
-            if (isDay)
+            if (isDay)      // 낮
             {
+                EventObject.SetActive(true);          
                 day++;
                 InGameUIManager.instance.ui_InGameMainUI.SetDayText(day);
                 InGameUIManager.instance.ui_Day.SetText(day);
                 InGameUIManager.instance.ui_Day.gameObject.SetActive(true);
+                SelectEvent.intDay++;
+                Debug.Log(SelectEvent.intDay);
             }
             else
-            {
+            {               // 밤
+                EventObject.SetActive(false);
                 timeOff = false;
             }
         }
