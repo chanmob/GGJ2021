@@ -15,8 +15,8 @@ public class Title : MonoBehaviour
 
     private IEnumerator TitleCoroutine()
     {
-        Vector3 startPos = new Vector3(0, 13.5f, -10);
-        Vector3 endPos = new Vector3(0, -13.5f, -10);
+        Vector3 startPos = new Vector3(0, 27f, -10);
+        Vector3 endPos = new Vector3(0, -27f, -10);
 
         while(elapsedtime < waitTime)
         {
