@@ -264,6 +264,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.01
+  clips:
+  - {fileID: 8300000, guid: 02d025a4ff4313641942eb56641af35f, type: 3}
+  - {fileID: 8300000, guid: 5ed8de0dd2743b748a9409f0ee35c0ce, type: 3}
   flag: {fileID: 77778320}
   flagSprites:
   - {fileID: 7260684962749764409, guid: 6c87ac738b14aa54d99d628f389a4dbc, type: 3}

@@ -23,6 +23,8 @@ public class Boat : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public AudioClip[] clips;
+
     public SpriteRenderer flag;
 
     public Sprite[] flagSprites;
@@ -81,6 +83,8 @@ public class Boat : MonoBehaviour
 
     private void BreakBoat()
     {
+        audioSource.clip = clips[0];
+        audioSource.Play();
         InGameManager.instance.DecreaseHP(1);
         ObjectPoolManager.instance.ReturnBoat(this);
     }
@@ -89,6 +93,7 @@ public class Boat : MonoBehaviour
     {
         InGameManager.instance.arrivedBoatCount++;
         InGameManager.instance.boatCount--;
+        audioSource.clip = clips[1];
         audioSource.Play();
         ObjectPoolManager.instance.ReturnBoat(this);
     }
