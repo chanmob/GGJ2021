@@ -7,7 +7,7 @@ public class InGameManager : Singleton<InGameManager>
 {
     private const float minDistance = 0.5f;
 
-    private const float dayTime = 3f;
+    private const float dayTime = 60f;
 
     [SerializeField]
     private Light2D globalLight;
@@ -129,18 +129,20 @@ public class InGameManager : Singleton<InGameManager>
             time = 0;
             isDay = !isDay;
 
-            if (isDay)      // 낮
+            if (isDay)      //낮
             {
-                EventObject.SetActive(true);          
                 day++;
+                if(day == 3)
+                {
+                    SelectEvent.intDay = 1;
+                    EventObject.SetActive(true);
+                }
                 InGameUIManager.instance.ui_InGameMainUI.SetDayText(day);
                 InGameUIManager.instance.ui_Day.SetText(day);
                 InGameUIManager.instance.ui_Day.gameObject.SetActive(true);
-                SelectEvent.intDay++;
-                Debug.Log(SelectEvent.intDay);
             }
             else
-            {               // 밤
+            {              // 밤
                 EventObject.SetActive(false);
                 timeOff = false;
             }
