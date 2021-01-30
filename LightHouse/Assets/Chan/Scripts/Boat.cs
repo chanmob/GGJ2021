@@ -18,6 +18,13 @@ public class Boat : MonoBehaviour
     [SerializeField]
     private float _speed = 0.01f;
 
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnEnable()
     {
         switch (boatType)
@@ -54,8 +61,14 @@ public class Boat : MonoBehaviour
 
     private void BreakBoat()
     {
-        ObjectPoolManager.instance.ReturnBoat(this);
         InGameManager.instance.DecreaseHP(1);
+        ObjectPoolManager.instance.ReturnBoat(this);
+    }
+
+    private void ArriveIsland()
+    {
+        audioSource.Play();
+        ObjectPoolManager.instance.ReturnBoat(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -63,6 +76,10 @@ public class Boat : MonoBehaviour
         if (collision.CompareTag("Obstacle"))
         {
             BreakBoat();
+        }
+        else if (collision.CompareTag("Island"))
+        {
+            ArriveIsland();
         }
     }
 }

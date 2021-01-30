@@ -8,6 +8,13 @@ public class BoatController : MonoBehaviour
 
     public GameObject lightObject;
 
+    private AudioSource audiosource;
+
+    private void Start()
+    {
+        audiosource = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -25,6 +32,7 @@ public class BoatController : MonoBehaviour
                     if (hits[i].collider.CompareTag("Boat"))
                     {
                         selectedBoat = hits[i].collider.GetComponent<Boat>();
+                        audiosource.Play();
                         return;
                     }
                 }
@@ -40,6 +48,9 @@ public class BoatController : MonoBehaviour
         {
             lightObject.SetActive(true);
             lightObject.transform.position = selectedBoat.transform.position;
+
+            if (selectedBoat.gameObject.activeSelf == false)
+                selectedBoat = null;
         }
         else
         {
